@@ -1,0 +1,19 @@
+{
+  "name": "asdf-lib-test",
+  "version": "1.0.0",
+  "description": "Library test",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "na"
+  },
+  "keywords": [
+    "library",
+    "test",
+    "asdf"
+  ],
+  "author": "Arne van Iterson",
+  "license": "ISC"
+}

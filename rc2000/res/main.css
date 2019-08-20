@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Visitor';
+  src: URL('/data/visitor1.ttf') format('truetype');
+}
+body {
+  font-family: "Visitor", sans-serif;
+	background-color: rgba(42, 42, 46, 1);
+	text-align: center;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#board {
+	position: relative;
+	background-color: #8CD;
+	width: 640px;
+	height: 480px;
+	margin: auto;
+
+	background-image: url('images/rc2000.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	border: 5px solid whitesmoke;
+	border-radius: 8px;
+}

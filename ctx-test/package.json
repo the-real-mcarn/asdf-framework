@@ -1,0 +1,20 @@
+{
+  "name": "asdf-ctx-test",
+  "version": "1.0.0",
+  "description": "Canvas renderer test",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "na"
+  },
+  "keywords": [
+    "canvas",
+    "renderer",
+    "test",
+    "asdf"
+  ],
+  "author": "Arne van Iterson",
+  "license": "ISC"
+}
