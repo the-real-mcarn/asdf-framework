@@ -1,0 +1,56 @@
+@font-face {
+	font-family: "Visitor";
+	font-style: normal;
+	src: url("./fonts/visitor1.ttf") format("truetype");
+}
+@font-face {
+	font-family: "KeyCaps";
+	font-style: normal;
+	src: url("./fonts/keycaps.TTF") format("truetype");
+}
+.title {
+	font-family: "Visitor";
+	font-size: 40px;
+	color: white;
+}
+body {
+	background-color: rgba(42, 42, 46, 1);
+	text-align: center;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#board {
+	position: relative;
+	background-color: #111;
+	width: 640px;
+	height: auto;
+	margin: auto;
+	border: 5px solid whitesmoke;
+}
+.controls_container {
+	padding: 20px;
+	color: white;
+	text-align: center;
+	display: grid;
+  grid-template-areas:
+    'control_1 control_2'
+		'control_def_1 control_def_2';
+  grid-gap: 10px;
+	width: 300px;
+	left: calc(50% - 160px);
+	position: absolute;
+}
+.control {
+	font-family: "KeyCaps";
+	font-size: 33px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 150px;
+}
+.control_definition {
+	font-family: "Visitor";
+	width: 150px;
+}

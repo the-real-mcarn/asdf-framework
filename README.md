@@ -9,8 +9,8 @@ To try out asdf library and the projects for yourself, you need to:
 * Download node.js
 * Clone this repository
 * Go the the folder where you cloned this repository
-* Run startHTTP.bat or run
-```
+* Run `npm start` or run
+```bash
 node list.js --dir ./
 ```
 

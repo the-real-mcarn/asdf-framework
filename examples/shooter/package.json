@@ -1,0 +1,21 @@
+{
+  "name": "asdf-shooter",
+  "version": "1.0.0",
+  "description": "Spacemania 2000 Shooter Game",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "na"
+  },
+  "keywords": [
+    "shooter",
+    "spacemania",
+    "2000",
+    "game",
+    "asdf"
+  ],
+  "author": "Arne van Iterson",
+  "license": "ISC"
+}
