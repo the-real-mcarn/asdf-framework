@@ -67,6 +67,15 @@ class CanvasRenderer {
               0,0,
               child.tileW, child.tileH
             );
+          } else if (child.imgPos && child.width && child.height) {
+            ctx.drawImage(
+              img,
+              child.imgPos.x,
+              child.imgPos.y,
+              child.width, child.height,
+              0,0,
+              child.width, child.height
+            );
           } else {
             ctx.drawImage(img, 0, 0);
           }

@@ -1,6 +1,6 @@
 class MouseControls {
   constructor(container) {
-    this.el = container || document.body
+    this.el = container || document.body;
     // State
       this.pos = {x: 0, y: 0};
       this.isDown = false;

@@ -9,8 +9,11 @@ import MouseControls from "./controls/MouseControls.js";
 
 import Sprite from "./Sprite.js";
 import TileSprite from "./TileSprite.js";
+import TileSpriteXML from "./TileSpriteXML.js";
 import Text from "./Text.js";
 import Texture from "./Texture.js";
+
+import TileMapXML from "./TileMapXML.js";
 
 export default {
   CanvasRenderer,
@@ -21,6 +24,8 @@ export default {
   MouseControls,
   Sprite,
   TileSprite,
+  TileMapXML,
+  TileSpriteXML,
   Text,
   Texture
 };
