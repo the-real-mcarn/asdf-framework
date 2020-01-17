@@ -1,44 +1,24 @@
-// XML format must be:
-//      <TextureAlias imagePath="">
-//         <SubTexture x="" y="" width="" height=""></SubTexture>
-//         ...
-//      </TextureAlias>
+import Container from "./Container.js";
+import TileSpriteXML from "./TileSpriteXML.js";
 
-class TileMapXML {
-    constructor(url) {
-        this.array = [];
-        this.fetchXMLtoArray(url);
-    }
+class TileMapXML extends Container {
+    constructor (tiles, mapW, mapH, texture, xml) {
+        super(texture);
+        this.mapW = mapW;
+        this.mapH = mapH;
+        this.tileW = xml.array[tiles[0]].width;
+        this.tileH = xml.array[tiles[0]].height;
+        this.w = mapW * this.tileW;
+        this.h = mapH * this.tileH;
 
-    fetchXMLtoArray(url) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, false);
-        xhr.send(null);
-
-        if (xhr.status === 200) {
-            var children = xhr.responseXML.children[0].children;
-            for (let index = 0; index < children.length; index++) {
-                const element = children[index];
-                this.array.push({
-                    name: element.attributes.name.nodeValue,
-                    x: element.attributes.x.nodeValue,
-                    y: element.attributes.y.nodeValue,
-                    width: element.attributes.width.nodeValue,
-                    height: element.attributes.height.nodeValue
-                });
-            }
-        } else {
-            console.error('XML file cannot be loaded!')
-        }
-    }
-
-    findIndex(attribute, value) {
-        for (let index = 0; index < this.array.length; index++) {
-            const element = this.array[index];
-            if (element[attribute] == value) {
-                return index;
-            }
-        }
+        // Add all tile sprites
+        this.children = tiles.map((frame, i) => {
+            const s = new TileSpriteXML(texture, xml, frame);
+            s.frame = frame;
+            s.pos.x = i % mapW * this.tileW;
+            s.pos.y = Math.floor(i / mapW) * this.tileH;
+            return s;
+        });
     }
 }
 
