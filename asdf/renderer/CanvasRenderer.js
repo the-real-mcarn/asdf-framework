@@ -1,4 +1,12 @@
+/**
+ * CanvasRenderer class
+ */
 class CanvasRenderer {
+  /**
+   * Renderer for CanvasJS, defines width and height for the canvas element
+   * @param {*} w Width for canvas element
+   * @param {*} h Height for canvas element
+   */
   constructor(w, h) {
     const canvas = document.createElement("canvas");
     this.w = canvas.width = w;
@@ -8,7 +16,10 @@ class CanvasRenderer {
     this.ctx.textBaseLine = "top";
   }
 
-  setPixelated(){
+  /**
+   * Turns off image smoothening on the canvas element
+   */
+  setPixelated() {
     this.ctx['imageSmoothingEnabled'] = false;       /* standard */
     this.ctx['mozImageSmoothingEnabled'] = false;    /* Firefox */
     this.ctx['oImageSmoothingEnabled'] = false;      /* Opera */
@@ -16,6 +27,12 @@ class CanvasRenderer {
     this.ctx['msImageSmoothingEnabled'] = false;     /* IE */
   }
 
+
+  /**
+   * Render all children on the canvas element
+   * @param {*} container Containing element of the canvas element 
+   * @param {boolean} [clear=true] Defines if the canvas element needs to be cleared for the next render
+   */
   render(container, clear = true) {
     const { ctx } = this;
     function renderRec(container) {
@@ -27,7 +44,6 @@ class CanvasRenderer {
 
         ctx.save();
 
-        // Draw the leaf node
         if (child.pos) {
           ctx.translate(Math.round(child.pos.x), Math.round(child.pos.y));
         }
@@ -53,7 +69,7 @@ class CanvasRenderer {
           if (font) ctx.font = font;
           if (fill) ctx.fillStyle = fill;
           if (align) ctx.textAlign = align;
-          ctx.fillText(child.text, 0,0);
+          ctx.fillText(child.text, 0, 0);
         }
 
         else if (child.texture) {
@@ -64,7 +80,7 @@ class CanvasRenderer {
               child.frame.x * child.tileW,
               child.frame.y * child.tileH,
               child.tileW, child.tileH,
-              0,0,
+              0, 0,
               child.tileW, child.tileH
             );
           } else if (child.imgPos && child.width && child.height) {
@@ -73,7 +89,7 @@ class CanvasRenderer {
               child.imgPos.x,
               child.imgPos.y,
               child.width, child.height,
-              0,0,
+              0, 0,
               child.width, child.height
             );
           } else {
@@ -81,7 +97,7 @@ class CanvasRenderer {
           }
         }
 
-        // Handle the child types
+        // Handle children with children
         if (child.children) {
           renderRec(child);
         }
@@ -89,7 +105,7 @@ class CanvasRenderer {
       })
     }
     if (clear) {
-      ctx.clearRect(0,0,this.w,this.h);
+      ctx.clearRect(0, 0, this.w, this.h);
     }
     renderRec(container);
   }

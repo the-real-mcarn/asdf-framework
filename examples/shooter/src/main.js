@@ -2,115 +2,115 @@ import asdf from "../../../asdf/index.js";
 const { Container, CanvasRenderer, KeyControls, MouseControls, Text, Texture, Sprite } = asdf;
 
 // Board Setup
-  const w = 640;
-  const h = 300;
-  const renderer = new CanvasRenderer(w, h);
-  document.querySelector("#board").appendChild(renderer.view);
+const w = 640;
+const h = 300;
+const renderer = new CanvasRenderer(w, h);
+document.querySelector("#board").appendChild(renderer.view);
 
 // Setup game variables
-  let dt = 0;
-  let last = 0;
-  let lastShot = 0;
-  let lastSpawn = 0;
-  let spawnSpeed = 1.0;
-  let scoreAmount = 0;
-  let gameOver = false;
+let dt = 0;
+let last = 0;
+let lastShot = 0;
+let lastSpawn = 0;
+let spawnSpeed = 1.0;
+let scoreAmount = 0;
+let gameOver = false;
 
 // Setup game objects
-  const scene = new Container();
+const scene = new Container();
 
 // Load game textures
-  const textures = {
-    background: new Texture("./res/images/bg.png"),
-    spaceship: new Texture("./res/images/spaceship.png"),
-    bullet: new Texture("./res/images/bullet.png"),
-    baddie: new Texture("./res/images/baddie.png")
-  }
+const textures = {
+  background: new Texture("./res/images/bg.png"),
+  spaceship: new Texture("./res/images/spaceship.png"),
+  bullet: new Texture("./res/images/bullet.png"),
+  baddie: new Texture("./res/images/baddie.png")
+}
 
 // Spaceship
-  const controls = new KeyControls();
-  const ship = new Sprite(textures.spaceship);
-  ship.pos.x = 120;
-  ship.pos.y = h / 2 - 16;
-  ship.update = function(dt, t) {
-    const { pos } = this;
-    pos.x += controls.x * dt * 300;
-    pos.y += controls.y * dt * 300;
+const controls = new KeyControls();
+const ship = new Sprite(textures.spaceship);
+ship.pos.x = 120;
+ship.pos.y = h / 2 - 16;
+ship.update = function (dt, t) {
+  const { pos } = this;
+  pos.x += controls.x * dt * 300;
+  pos.y += controls.y * dt * 300;
 
-    if (pos.x < 0) pos.x = 0;
-    if (pos.x > w - 32) pos.x = w - 32;
-    if (pos.y < 0) pos.y = 0;
-    if (pos.y > h - 32) pos.y = h - 32;
-  }
+  if (pos.x < 0) pos.x = 0;
+  if (pos.x > w - 32) pos.x = w - 32;
+  if (pos.y < 0) pos.y = 0;
+  if (pos.y > h - 32) pos.y = h - 32;
+}
 
 // Bullets
-   const bullets = new Container();
-   function fireBullet(x, y) {
-     const bullet = new Sprite(textures.bullet);
-     bullet.pos.x = x;
-     bullet.pos.y = y;
-     bullet.update = function(dt, t) {
-       bullet.pos.x += 400 * dt;
-     }
-     bullets.add(bullet);
-   }
+const bullets = new Container();
+function fireBullet(x, y) {
+  const bullet = new Sprite(textures.bullet);
+  bullet.pos.x = x;
+  bullet.pos.y = y;
+  bullet.update = function (dt, t) {
+    bullet.pos.x += 400 * dt;
+  }
+  bullets.add(bullet);
+}
 
 // Bad guys
-  const baddies = new Container();
-  function spawnBaddie(x, y, speed) {
-    const baddie = new Sprite(textures.baddie);
-    baddie.pos.x = x;
-    baddie.pos.y = y;
-    baddie.update = function(dt) {
-      this.pos.x += speed * dt;
-      this.pos.y += Math.sin(this.pos.x / 15) * 1;
-    };
-    baddies.add(baddie);
-  }
+const baddies = new Container();
+function spawnBaddie(x, y, speed) {
+  const baddie = new Sprite(textures.baddie);
+  baddie.pos.x = x;
+  baddie.pos.y = y;
+  baddie.update = function (dt) {
+    this.pos.x += speed * dt;
+    this.pos.y += Math.sin(this.pos.x / 15) * 1;
+  };
+  baddies.add(baddie);
+}
 
 // Show score
-  const score = new Text(`${scoreAmount}`, {
-    font: "15pt Visitor",
-    fill: "#000000",
-    align: "left"
-  });
-  score.pos.x = 50;
-  score.pos.y = 15;
-  score.update = function() {
-    if (gameOver) {
-      score.pos.x = w / 2;
-      score.pos.y = (h / 3) * 2;
-      score.text = `Score:  ` + `${scoreAmount}`;
-      score.style.align = "center";
-      score.style.font = "24pt Visitor"
-    } else {
-      score.text = `${scoreAmount}`;
-    }
+const score = new Text(`${scoreAmount}`, {
+  font: "15pt Visitor",
+  fill: "#000000",
+  align: "left"
+});
+score.pos.x = 50;
+score.pos.y = 15;
+score.update = function () {
+  if (gameOver) {
+    score.pos.x = w / 2;
+    score.pos.y = (h / 3) * 2;
+    score.text = `Score:  ` + `${scoreAmount}`;
+    score.style.align = "center";
+    score.style.font = "24pt Visitor"
+  } else {
+    score.text = `${scoreAmount}`;
   }
+}
 
 // Gameover
-  function doGameOver() {
-    const gameOverMessage = new Text(`Game Over`, {
-      font: "45pt Visitor",
-      fill: "#000000",
-      align: "center"
-    });
-    gameOverMessage.pos.x = w / 2;
-    gameOverMessage.pos.y = h / 3;
+function doGameOver() {
+  const gameOverMessage = new Text(`Game Over`, {
+    font: "45pt Visitor",
+    fill: "#000000",
+    align: "center"
+  });
+  gameOverMessage.pos.x = w / 2;
+  gameOverMessage.pos.y = h / 3;
 
-    scene.add(gameOverMessage);
-    scene.remove(ship);
-    scene.remove(baddies);
-    scene.remove(bullets);
-    gameOver = true;
-  }
+  scene.add(gameOverMessage);
+  scene.remove(ship);
+  scene.remove(baddies);
+  scene.remove(bullets);
+  gameOver = true;
+}
 
 // Add game objects
-  scene.add(new Sprite(textures.background));
-  scene.add(ship);
-  scene.add(bullets);
-  scene.add(baddies);
-  scene.add(score);
+scene.add(new Sprite(textures.background));
+scene.add(ship);
+scene.add(bullets);
+scene.add(baddies);
+scene.add(score);
 
 
 // Looping Code

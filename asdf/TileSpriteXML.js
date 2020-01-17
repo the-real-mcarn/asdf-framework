@@ -1,7 +1,16 @@
 import Sprite from "./Sprite.js";
 
+/**
+ * TileSpriteXML class
+ */
 class TileSpriteXML extends Sprite {
-    constructor (texture, xml, index) {
+    /**
+     * Creates sprite instance from XML indexed spritesheet
+     * @param {*} texture Instance of Texture with source image
+     * @param {*} xml Instance of SpriteSheetXML with xml index
+     * @param {number} index Index of XML element
+     */
+    constructor(texture, xml, index) {
         super(texture);
         var src = xml.array[index];
         this.imgPos = { x: src['x'], y: src['y'] };
