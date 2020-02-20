@@ -1,12 +1,6 @@
-/**
- * CanvasRenderer class
- */
+
 class CanvasRenderer {
-  /**
-   * Renderer for CanvasJS, defines width and height for the canvas element
-   * @param {*} w Width for canvas element
-   * @param {*} h Height for canvas element
-   */
+  
   constructor(w, h) {
     const canvas = document.createElement("canvas");
     this.w = canvas.width = w;
@@ -16,9 +10,6 @@ class CanvasRenderer {
     this.ctx.textBaseLine = "top";
   }
 
-  /**
-   * Turns off image smoothening on the canvas element
-   */
   setPixelated() {
     this.ctx['imageSmoothingEnabled'] = false;       /* standard */
     this.ctx['mozImageSmoothingEnabled'] = false;    /* Firefox */
@@ -27,12 +18,6 @@ class CanvasRenderer {
     this.ctx['msImageSmoothingEnabled'] = false;     /* IE */
   }
 
-
-  /**
-   * Render all children on the canvas element
-   * @param {*} container Containing element of the canvas element 
-   * @param {boolean} [clear=true] Defines if the canvas element needs to be cleared for the next render
-   */
   render(container, clear = true) {
     const { ctx } = this;
     function renderRec(container) {

@@ -1,29 +1,9 @@
-
-/**
- * SpriteSheetXML - Reads XML files to get texture data
- * 
- * **XML format must be:**
- * 
- *   <TextureAlias imagePath="">
- * 
- *       <SubTexture x="" y="" width="" height=""></SubTexture>
- *       ...
- *   </TextureAlias>
- */
 class SpriteSheetXML {
-    /**
-     * Set url of XML file
-     * @param {String} url Url to XML file
-     */
     constructor(url) {
         this.array = [];
         this.fetchXMLtoArray(url);
     }
 
-    /**
-     * Fetch XML file and put contents in a JS array
-     * @param {String} url Url to XML file
-     */
     fetchXMLtoArray(url) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url, false);
@@ -46,12 +26,6 @@ class SpriteSheetXML {
         }
     }
 
-    /**
-     * Find index of XML element with attribute == value
-     * @param {String} attribute XML element attribute
-     * @param {String} value Value of XML element attribute
-     * @returns {number} Index of XML element
-     */
     findIndex(attribute, value) {
         for (let index = 0; index < this.array.length; index++) {
             const element = this.array[index];

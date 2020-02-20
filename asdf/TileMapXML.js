@@ -1,18 +1,7 @@
 import Container from "./Container.js";
 import TileSpriteXML from "./TileSpriteXML.js";
 
-/**
- * TileMapXML class
- */
 class TileMapXML extends Container {
-    /**
-     * Draws array of tiles from XML indexed spritesheet
-     * @param {number[]} tiles Array of XML indexes
-     * @param {*} mapW Amount of tiles over the width of the map
-     * @param {*} mapH Amount of tiles over the height of the map
-     * @param {*} texture Texture instance of source image file
-     * @param {*} xml SpriteSheetXML instance of source xml file
-     */
     constructor(tiles, mapW, mapH, texture, xml) {
         super(texture);
         this.mapW = mapW;
