@@ -1,4 +1,4 @@
-import asdf from "../../../asdf/index.js";
+var asdf = require("../../../lib/index");
 const { TileSprite, Texture, math } = asdf;
 const texture = new Texture("./res/images/characters.png");
 
@@ -38,4 +38,4 @@ class King extends TileSprite {
     }
 }
 
-export default King;
+module.exports = King;

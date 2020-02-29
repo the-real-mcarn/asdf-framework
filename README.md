@@ -6,13 +6,7 @@ Me making games using HTML5 Games: Novice to Ninja by Sitepoint.
 The projects here are very similar to those featured in the book, and it will take some time before I get to make my own game.
 
 To try out asdf library and the projects for yourself, you need to:
-* Download node.js
-* Clone this repository
-* Go the the folder where you cloned this repository
-* Run `npm start` or run
-```bash
-node list.js --dir ./
-```
+* TODO
 
 Releases will be featured on 
 [ARNweb Games](https://arnweb.nl/games/)

@@ -1,28 +1,21 @@
 {
   "name": "asdf-games",
   "version": "1.0.0",
-  "description": "Me making games using HTML5 Games: Novice to Ninja by Sitepoint.",
-  "main": "list.js",
-  "dependencies": {
-    "browserify": "^16.5.0"
-  },
-  "devDependencies": {
-    "budo": "^11.6.3",
-    "serve-index": "^1.9.1"
-  },
-  "scripts": {
-    "start": "node list.js --dir ./ --live"
-  },
+  "description": "Javascript gaming framework, based upon the framework made in the book HTML5 Games: Novice to Ninja by Sitepoint.",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "asdf-games"
+    "url": "git+https://gitea.arnweb.nl/arne/asdf-games#master"
   },
   "keywords": [
-    "ASDF",
-    "ARNweb",
-    "Games",
-    "Sitepoint"
+    "asdf",
+    "js",
+    "game",
+    "sitepoint"
   ],
-  "author": "Arne van Iterson",
+  "author": {
+    "name": "Arne van Iterson",
+    "url": "https://gitea.arnweb.nl/arne/"
+  },
   "license": "ISC"
 }

@@ -1,4 +1,4 @@
-import asdf from "../../../asdf/index.js";
+var asdf = require("../../../lib/index");
 const { Game, Container, CanvasRenderer, math, KeyControls, MouseControls, Text, Texture, Sprite } = asdf;
 
 const game = new Game(640, 320, false);

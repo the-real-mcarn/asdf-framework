@@ -1,4 +1,4 @@
-import asdf from "../../../asdf/index.js";
+var asdf = require('../../../lib/index');
 const { Container, CanvasRenderer, KeyControls, MouseControls, Text, Texture, Sprite } = asdf;
 
 // Board Setup
