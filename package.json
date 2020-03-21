@@ -17,5 +17,8 @@
     "name": "Arne van Iterson",
     "url": "https://gitea.arnweb.nl/arne/"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
 }
