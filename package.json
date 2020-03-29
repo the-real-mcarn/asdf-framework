@@ -1,6 +1,6 @@
 {
   "name": "asdf-games",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Javascript gaming framework, based upon the framework made in the book HTML5 Games: Novice to Ninja by Sitepoint.",
   "main": "lib/index.js",
   "repository": {
