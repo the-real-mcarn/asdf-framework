@@ -571,6 +571,33 @@ export class Camera extends Container<unknown> {
   update(t: number, dt: number): void;
 }
 
+export class Sound {
+
+  src: string;
+  options: {
+    loop: boolean,
+    volume: number
+  };
+
+  /**
+   * Initiates HTML5 audio element for source audio file with control methods
+   * @param src Source audio file
+   * @param options Play settings
+   */
+  constructor(src: String, options = {});
+
+  /**
+   * Starts playing the audio file
+   * @param overrides sets options for playing the sound using different setting as defined in `constructor()`
+   */
+  play(overrides = {}): void;
+
+  /**
+   * Stops playing the audio file
+   */
+  stop(): void;
+}
+
 interface NumericalEntity {pos: Coordinates, w: number, h: number}
 
 interface NumericalEntityWithHitbox extends NumericalEntity {hitBox: NumericalEntity}
