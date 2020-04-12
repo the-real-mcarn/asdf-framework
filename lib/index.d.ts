@@ -571,26 +571,28 @@ export class Camera extends Container<unknown> {
   update(t: number, dt: number): void;
 }
 
+interface SoundOptions {
+  loop: boolean,
+  volume: number
+}
+
 export class Sound {
 
   src: string;
-  options: {
-    loop: boolean,
-    volume: number
-  };
+  options: SoundOptions;
 
   /**
    * Initiates HTML5 audio element for source audio file with control methods
    * @param src Source audio file
    * @param options Play settings
    */
-  constructor(src: String, options = {});
+  constructor(src: string, options?: SoundOptions);
 
   /**
    * Starts playing the audio file
    * @param overrides sets options for playing the sound using different setting as defined in `constructor()`
    */
-  play(overrides = {}): void;
+  play(overrides?: SoundOptions): void;
 
   /**
    * Stops playing the audio file
@@ -601,20 +603,6 @@ export class Sound {
 interface NumericalEntity {pos: Coordinates, w: number, h: number}
 
 interface NumericalEntityWithHitbox extends NumericalEntity {hitBox: NumericalEntity}
-
-export namespace deadInTracks {
-  /**
-   * This functions checks whether ent walks against a non-walkable object and whether it should move in the x and y position and how much.
-   * The difference with wallslide is that deadInTracks stops the entity entirely when it touches a non-walkable surface.
-   * wallslide will move the entity in x or y if possible.
-   * @param ent The entity that is moving.
-   * @param map The TileMap the entity moves on.
-   * @param x The maximal movement on the x. default is 0
-   * @param y The maximal movement on the y. default is 0
-   * @returns Coordinates of how much the entity walks in x and y.
-   */
-  export function deadInTracks(ent: NumericalEntity | NumericalEntityWithHitbox, map: TileMap, x?: number, y?: number): Coordinates;
-}
 
 export namespace wallslide {
   /**
