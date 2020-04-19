@@ -1,4 +1,4 @@
-![asdf-games logo](https://gitea.arnweb.nl/arne/asdf-games/src/branch/master/res/asdf-logo.png "asdf-games logo")
+![asdf-games](https://gitea.arnweb.nl/arne/asdf-games/raw/branch/master/res/asdf-logo.png "asdf-games logo")
 # asdf-games
 
 My attempt at making the framework featured in the book HTML5 Games: Novice to Ninja. 
@@ -8,9 +8,9 @@ I turned the framework featured in the book into an npm package for use with bro
 If you are on Github or Gitea now, you can find the npm package [here](https://www.npmjs.com/package/asdf-games).
 
 ## Installation
-To use asdf framework for your projects, you need to:
+To use asdf framework in your projects, you need to:
 * Install npm on your device (if you don't have it already)
-* Run ````npm install asdf-games```
+* Run ```npm install asdf-games```
 * Use the snippet below to start off or check out one of the examples, keep in mind that the examples are not comepletely up to date. 
 * Thanks to my friend [Job](https://jobbel.nl/), this project supports TypeScript typings. Make sure your editor supports them to make your life easier.
 
