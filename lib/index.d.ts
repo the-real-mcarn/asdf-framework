@@ -571,26 +571,28 @@ export class Camera extends Container<unknown> {
   update(t: number, dt: number): void;
 }
 
+interface SoundOptions {
+  loop: boolean,
+  volume: number
+}
+
 export class Sound {
 
   src: string;
-  options: {
-    loop: boolean,
-    volume: number
-  };
+  options: SoundOptions;
 
   /**
    * Initiates HTML5 audio element for source audio file with control methods
    * @param src Source audio file
    * @param options Play settings
    */
-  constructor(src: String, options = {});
+  constructor(src: string, options?: SoundOptions);
 
   /**
    * Starts playing the audio file
    * @param overrides sets options for playing the sound using different setting as defined in `constructor()`
    */
-  play(overrides = {}): void;
+  play(overrides?: SoundOptions): void;
 
   /**
    * Stops playing the audio file
