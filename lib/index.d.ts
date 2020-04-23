@@ -600,9 +600,13 @@ export class Sound {
   stop(): void;
 }
 
-interface NumericalEntity {pos: Coordinates, w: number, h: number}
+interface NumericalEntityBase {pos: Coordinates}
+interface NumericalSprite {w: number, h: number}
+interface NumericalTileSprite {tileW: number, tileH: number}
 
-interface NumericalEntityWithHitbox extends NumericalEntity {hitBox: NumericalEntity}
+type NumericalEntity = NumericalSprite | NumericalTileSprite
+
+type NumericalEntityWithHitbox = {hitBox: NumericalEntity} & NumericalEntity
 
 export namespace deadInTracks {
   /**
