@@ -602,9 +602,13 @@ export class Sound {
   stop(): void;
 }
 
-interface NumericalEntity {pos: Coordinates, w: number, h: number}
+interface NumericalEntityBase {pos: Coordinates}
+interface NumericalSprite {w: number, h: number}
+interface NumericalTileSprite {tileW: number, tileH: number}
 
-interface NumericalEntityWithHitbox extends NumericalEntity {hitBox: NumericalEntity}
+type NumericalEntity = NumericalSprite | NumericalTileSprite
+
+type NumericalEntityWithHitbox = {hitBox: NumericalEntity} & NumericalEntity
 
 export namespace deadInTracks {
   /**
@@ -648,7 +652,7 @@ export namespace entity {
    * @param container The container.
    * @param hitCallback The callback that is executed when an entity hits something in the container.
    */
-  export function hits(entity: NumericalEntityWithHitbox | NumericalEntity, container: Container<NumericalEntityWithHitbox | NumericalEntity>, hitCallback: (e2: NumericalEntityWithHitbox | NumericalEntity) => any): void;
+  export function hits<T extends NumericalEntityWithHitbox | NumericalEntity>(entity: NumericalEntityWithHitbox | NumericalEntity, container: Container<T>, hitCallback: (e2: T) => any): void;
 
   /**
    * This functions calculates whether two entities hit each other.
