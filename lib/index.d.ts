@@ -149,6 +149,12 @@ export class Texture {
   constructor(url: string);
 }
 
+interface TextStyleOptions {
+  font?: string,
+  fill?: string | CanvasGradient | CanvasPattern,
+  align?: CanvasTextAlign
+}
+  
 /**
  * Text class
  */
@@ -158,18 +164,14 @@ export class Text {
   text: string;
   visible: boolean;
   update?: (dt?: number, t?: number) => void;
-  style: {
-    font?: string,
-    fill?: string | CanvasGradient | CanvasPattern,
-    align?: CanvasTextAlign
-  };
+  style: TextStyleOptions'
 
     /**
    * Prints styled text on canvas 
    * @param text Text to print
    * @param style Styles to apply to text
    */
-  constructor(text: string, style: {});
+  constructor(text: string, style: TextStyleOptions);
 }
 
 /**
