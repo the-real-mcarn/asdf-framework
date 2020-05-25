@@ -3,7 +3,7 @@ export as namespace asdf;
 type Coordinates = {x: number, y: number};
 
 class Renderable {
-  visible?: boolean,
+  visible?: boolean;
   dead?: boolean
 }
 
@@ -169,7 +169,7 @@ export class Text extends Renderable {
   text: string;
   visible: boolean;
   update?: (dt?: number, t?: number) => void;
-  style: TextStyleOptions'
+  style: TextStyleOptions;
 
     /**
    * Prints styled text on canvas 
