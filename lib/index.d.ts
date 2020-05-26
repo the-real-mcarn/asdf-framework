@@ -2,6 +2,11 @@ export as namespace asdf;
 
 type Coordinates = {x: number, y: number};
 
+class Renderable {
+  visible?: boolean;
+  dead?: boolean
+}
+
 /**
  * TileSpriteXML class
  */
@@ -158,13 +163,13 @@ interface TextStyleOptions {
 /**
  * Text class
  */
-export class Text {
+export class Text extends Renderable {
 
   pos: Coordinates;
   text: string;
   visible: boolean;
   update?: (dt?: number, t?: number) => void;
-  style: TextStyleOptions'
+  style: TextStyleOptions;
 
     /**
    * Prints styled text on canvas 
@@ -219,15 +224,13 @@ export class SpriteSheetXML {
 /**
  * Sprite class
  */
-export class Sprite {
+export class Sprite extends Renderable {
   texture: Texture;
   pos: Coordinates;
   anchor: Coordinates;
   scale: Coordinates;
   pivot: Coordinates;
-  visible: boolean;
   rotation: number;
-  dead: boolean;
 
   update?: (dt?: number, t?: number) => void;
 
@@ -246,7 +249,8 @@ export class Game {
   h: number;
   renderer: CanvasRenderer;
   scene: Container<unknown>;
-
+  paused: boolean;
+	
   /**
    * Set the games parameters
    * @param w Width of canvas
@@ -260,14 +264,14 @@ export class Game {
    * Start game loop
    * @param gameUpdate Function to run next to scene updates such as debug logging, etc.
    */
-  run(gameUpdate: (dt?: number, t?: number) => void): void;
+  run(gameUpdate?: (dt?: number, t?: number) => void): void;
 }
 
 /**
  * Container class
  */
 export class Container<T> {
-  pos: {x: number, y: number};
+  pos: Coordinates;
   children: T[];
 
   constructor();
@@ -409,7 +413,7 @@ export class KeyControls {
    * @param value Value to set to key
    * @return Value of key
    */
-  key(key: number, value: boolean): boolean;
+  key(key: number, value?: boolean): boolean;
 
   /**
    * Resets default value (false) to all keys
@@ -574,8 +578,8 @@ export class Camera extends Container<unknown> {
 }
 
 interface SoundOptions {
-  loop: boolean,
-  volume: number
+  loop?: boolean,
+  volume?: number
 }
 
 export class Sound {
